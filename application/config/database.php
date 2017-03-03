@@ -70,8 +70,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | The $query_builder variables lets you determine whether or not to load
 | the query builder class.
 */
-$active_group = 'default'; // default or release
+$active_group = 'heroku'; // default or release
 $query_builder = TRUE;
+$db['heroku'] = array(
+	'dsn'	=> '',
+	'hostname' => 'ec2-23-23-111-171.compute-1.amazonaws.com',
+	'username' => 'yyehnqfixctmvp',
+	'password' => '3d375ca95a4e09cf6c3084ab0b12f9dc67c9efdacb72936aa647110b75446e08',
+	'database' => 'dbih8sd0501t3v',
+	'dbdriver' => 'mysqli',
+	'dbprefix' => '',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
+
 $db['freewha'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
