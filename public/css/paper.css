@@ -1,0 +1,27 @@
+
+body {
+    background: rgb(204, 204, 204);
+}
+
+@media print {
+    body, div[size="A4"] {
+        margin: 0;
+        box-shadow: 0;
+    }
+}
+
+.blank-page{
+    background: white;
+}
+
+@media screen and (min-width: 768px) {
+    div[size="A4"] {
+        width: 21cm;
+        min-height: 29.7cm;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 0.5cm;
+        box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+        padding: 30px 20px;
+    }
+}

@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-xs-12 col-md-6 col-centered">
+        <a class="btn btn-success" style="display: inline-block; margin-bottom: 13px;"
+           title="back to user list" href={{global-variable "Data.SessionData.BackUrl"}} >Back</a>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Question</h3>
+                <br>
+                <p>{{question.question_text}}</p>
+            </div>
+            <div class="panel-body" style="padding: 5px 15px">
+                <h4>Choices
+                </h4>
+                <ul class="list-group">
+                    {{#each question.choices as |choice|}}
+                        {{choice-item choice=choice action="editChoice"}}
+                    {{else}}
+                        <i>No choices for this question</i>
+                    {{/each}}
+                </ul>
+                <br />
+            </div>
+
+            <div class="panel-footer"></div>
+        </div>
+    </div>
+</div>
+{{modal-dialog visible=dialog.visible title=dialog.title content=dialog.content}}
+{{modal-dialog-yesno visible=dialogYesNo.visible title=dialogYesNo.title dialogYesNo=dialog.content clickYes=dialogYesNo.clickYes clickYesParam=dialogYesNo.clickYesParam}}

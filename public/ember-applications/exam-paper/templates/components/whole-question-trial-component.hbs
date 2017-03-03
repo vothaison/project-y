@@ -1,0 +1,65 @@
+{{#if isZeroLine}}
+    <table style="width: 100%">
+        <tr>
+            <td>
+                <span class="leading-string">Question {{question_index}}:</span>
+                <span>{{displayQuestion.question_text}}</span>
+            </td>
+            {{#each displayQuestion.choices as |choice index| }}
+                <td role="answer">
+                    <span class="leading-string">{{abcd index}}.</span> {{choice.choice_text}}
+                </td>
+            {{/each}}
+        </tr>
+    </table>
+{{else if isNegativeLine}}
+    <span>{{{displayQuestion.question_text}}}</span>
+{{else if isRewriting}}
+    <span>{{displayQuestion.question_text}}</span> <br />
+    <span>{{displayQuestion.answer_starter}}</span>
+{{else}}
+    <span class="leading-string">Question {{question_index}}:</span>
+    <span>{{displayQuestion.question_text}}</span>
+    <br/>
+    <table style="width: 100%">
+        {{#if isOneLine}}
+            <tr>
+                {{#each displayQuestion.choices as |choice index| }}
+                    <td style="width: 25%" role="answer" class="left-most-cell">
+                        <span class="leading-string">{{abcd index}}.</span> {{choice.choice_text}}
+                    </td>
+                {{/each}}
+            </tr>
+        {{/if}}
+
+        {{#if isTwoLines}}
+            <tr>
+                {{#each firstTwo as |choice index| }}
+                    <td style="width: 25%" role="answer" class="left-most-cell">
+                        <span class="leading-string">{{ab index}}.</span> {{choice.choice_text}}
+                    </td>
+                {{/each}}
+            </tr>
+
+            <tr>
+                {{#each lastTwo as |choice index| }}
+                    <td style="width: 25%" role="answer" class="left-most-cell">
+                        <span class="leading-string">{{cd index}}.</span> {{choice.choice_text}}
+                    </td>
+                {{/each}}
+            </tr>
+        {{/if}}
+
+        {{#if isFourLines}}
+            {{#each displayQuestion.choices as |choice index| }}
+                <tr>
+                    <td style="width: 25%" role="answer" class="left-most-cell">
+                        <span class="leading-string">{{abcd index}}.</span> {{choice.choice_text}}
+                    </td>
+                </tr>
+            {{/each}}
+
+        {{/if}}
+    </table>
+
+{{/if}}

@@ -1,0 +1,31 @@
+body{
+    background: lightgray;
+}
+
+.dashboard-side {
+    _background: #666;
+    min-height: 500px;
+}
+
+.dashboard-main {
+    _background: #666;
+    min-height: 500px;
+}
+
+.display-none{
+    display: none;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+.label-success {
+    background-color: white;
+    border: 1px solid #5cb85c;
+}
+
+#attachments tr th:first-child {
+    width: 80%;
+}

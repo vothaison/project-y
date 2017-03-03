@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-xs-12 col-md-6 col-centered">
+        <a class="btn btn-success" style="display: inline-block; margin-bottom: 13px;"
+           title="back to user list" href={{global-variable "Data.SessionData.BackUrl"}}>Back</a>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Raw</h3>
+            </div>
+            <div class="panel-body" style="padding: 5px 15px">
+                <div class="textarea-container">
+                    {{textarea value=raw  rows="10" style="width: 100%"}}
+                </div>
+
+            </div>
+
+            <div class="panel-footer"></div>
+        </div>
+        <button class="btn btn-default button-save" {{action "save"}} disabled={{not canSave}} title={{canSaveStatus}}>
+            Save
+        </button>
+        <br/>
+        <br/>
+
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Output</h3>
+            </div>
+            <div class="panel-body" style="padding: 5px 15px">
+                <div class="textarea-container">
+                    {{textarea value=output  rows="10" style="width: 100%"}}
+                </div>
+            </div>
+
+            <div class="panel-footer"></div>
+        </div>
+    </div>
+</div>
+{{modal-dialog-yesno visible=dialogYesNo.visible title=dialogYesNo.title dialogYesNo=dialog.content clickYes=dialogYesNo.clickYes clickYesParam=dialogYesNo.clickYesParam}}
+{{modal-dialog dialog=dialogInstance}}

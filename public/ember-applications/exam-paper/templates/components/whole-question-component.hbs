@@ -1,0 +1,88 @@
+{{#if (equal question._answerLines_ 0) }}
+
+    <table style="width: 100%" class="zero-line-question">
+        <tr>
+            <td>
+                <span class="leading-string">Question {{question_index}}:</span>
+                <span>{{question.question_text}}</span>
+            </td>
+            {{#each question.choices as |choice index| }}
+                <td style="width: 21%" role="answer">
+                    <span class="leading-string">{{abcd index}}.</span> {{choice.choice_text}}
+                </td>
+            {{/each}}
+        </tr>
+    </table>
+
+{{else if (equal question._answerLines_ -1)}}
+    <table style="width: 100%">
+        <tr>
+            <td  role='target' class='target'>
+                <span class="leading-string">Question {{question_index}}:</span>
+                <span role="question_text">{{{question.question_text}}}</span>
+            </td>
+        </tr>
+    </table>
+{{else if (equal question._answerLines_ -2)}}
+    <table style="width: 100%">
+        <tr>
+            <td  role='target' class='target'>
+                <span class="leading-string">Question {{question_index}}:</span>
+                <span role="question_text">{{{question.question_text}}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="dot-cell-answer">
+                <span role="question_text">{{{question.answer_starter}}}</span>
+            </td>
+        </tr>
+    </table>
+
+
+{{else}}
+
+    <span class="leading-string">Question {{question_index}}:</span>
+    <span>{{question.question_text}}</span>
+    <br/>
+    <table style="width: 100%">
+        {{#if (equal question._answerLines_ 1) }}
+            <tr>
+                {{#each question.choices as |choice index| }}
+                    <td style="width: 25%" role="answer" class="left-most-cell">
+                        <span class="leading-string">{{abcd index}}.</span> {{choice.choice_text}}
+                    </td>
+                {{/each}}
+            </tr>
+        {{/if}}
+
+        {{#if  (equal question._answerLines_ 2)}}
+            <tr>
+                {{#each firstTwo as |choice index| }}
+                    <td style="width: 25%" role="answer" class="left-most-cell">
+                        <span class="leading-string">{{ab index}}.</span> {{choice.choice_text}}
+                    </td>
+                {{/each}}
+            </tr>
+
+            <tr>
+                {{#each lastTwo as |choice index| }}
+                    <td style="width: 25%" role="answer" class="left-most-cell">
+                        <span class="leading-string">{{cd index}}.</span> {{choice.choice_text}}
+                    </td>
+                {{/each}}
+            </tr>
+        {{/if}}
+
+        {{#if  (equal question._answerLines_ 4)}}
+            {{#each question.choices as |choice index| }}
+                <tr>
+                    <td style="width: 25%" role="answer" class="left-most-cell">
+                        <span class="leading-string">{{abcd index}}.</span> {{choice.choice_text}}
+                    </td>
+                </tr>
+            {{/each}}
+
+        {{/if}}
+    </table>
+
+{{/if}}

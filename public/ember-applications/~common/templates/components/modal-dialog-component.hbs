@@ -1,0 +1,30 @@
+{{log dialog}}
+<div class="modal bs-example-modal-sm" role="dialog" tabindex="-1" aria-labelledby="mySmallModalLabel"
+     style="display: none;">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                {{#if showCloseButton}}
+                <button type="button" class="close" style="margin-top: -13px;"  {{action 'close'}}>
+                    <span
+                        aria-hidden="true" style="font-size: 15px;">x</span>
+                </button>
+                {{/if}}
+
+                <h4 class="modal-title" id="mySmallModalLabel">{{dialog.title}}</h4></div>
+            <div class="modal-body"> {{dialog.content}} </div>
+
+            <div class="modal-footer">
+                {{#if dialog.linkButtons.length}}
+                    {{#each dialog.linkButtons as |linkButton| }}
+                        <a type="button" class="btn btn-primary" href={{linkButton.href}}>{{linkButton.text}}</a>
+                    {{/each}}
+                {{else}}
+                    <button type="button" class="btn btn-primary" {{action 'close'}}>Close</button>
+
+                {{/if}}
+
+            </div>
+        </div>
+    </div>
+</div>

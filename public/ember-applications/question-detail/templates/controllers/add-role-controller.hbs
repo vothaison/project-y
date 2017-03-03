@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-xs-12 col-md-6 col-centered">
+        <a class="btn btn-success" style="display: inline-block; margin-bottom: 13px;"
+           title="back to user details" {{action 'back'}} >Back</a>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Add roles for user <b>{{global-variable "Data.SessionData.Login" }}</b></h3>
+            </div>
+            <div class="panel-body" style="padding: 5px 15px">
+                <h4>Roles that <b>{{global-variable "Data.SessionData.Login" }}</b> doesn't have</h4>
+                <ul class="list-group">
+                    {{#each model.unmappedRoles as |role|}}
+                        {{add-role-item role=role action="addRole" actionName="Add" }}
+                    {{else}}
+                        <i>No unmapped roles</i>
+                    {{/each}}
+                </ul>
+                <br />
+
+                <h4>Roles that <b>{{global-variable "Data.SessionData.Login" }}</b> has</h4>
+                <ul class="list-group">
+                    {{#each model.mappedRoles as |role|}}
+                        {{add-role-item role=role action="revokeRole" actionName="Revoke" }}
+                    {{else}}
+                        <i>No unmapped roles</i>
+                    {{/each}}
+                </ul>
+            </div>
+
+            <div class="panel-footer"></div>
+        </div>
+    </div>
+</div>
+{{modal-dialog visible=dialog.visible title=dialog.title content=dialog.content}}
+{{modal-dialog-yesno visible=dialogYesNo.visible title=dialogYesNo.title dialogYesNo=dialog.content clickYes=dialogYesNo.clickYes clickYesParam=dialogYesNo.clickYesParam}}

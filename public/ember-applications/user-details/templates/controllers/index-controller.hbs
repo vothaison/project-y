@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-xs-12 col-md-6 col-centered">
+        <a class="btn btn-success" style="display: inline-block; margin-bottom: 13px;"
+           title="back to user list" href={{global-variable "Data.SessionData.BackUrl"}} >Back</a>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Details for user <b>{{global-variable "Data.SessionData.Login" }}</b></h3>
+            </div>
+            <div class="panel-body" style="padding: 5px 15px">
+                <h4>Roles
+                    <a class="btn btn-default btn-sm" style="display: inline-block;"
+                       title="More roles for this user" {{ action 'startAddRole'}}>Add</a>
+                </h4>
+                <ul class="list-group">
+                    {{#each roles as |role|}}
+                        {{role-item role=role action="revokeRole"}}
+                    {{else}}
+                        <i>No role for this user</i>
+                    {{/each}}
+                </ul>
+                <br />
+
+                <h4>Privilege Actions</h4>
+                <ul class="list-group">
+                    {{#each privilegeActions as |actionName|}}
+                        <li class="list-group-item">{{actionName}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+
+            <div class="panel-footer"></div>
+        </div>
+    </div>
+</div>
+{{modal-dialog visible=dialog.visible title=dialog.title content=dialog.content}}
+{{modal-dialog-yesno visible=dialogYesNo.visible title=dialogYesNo.title dialogYesNo=dialog.content clickYes=dialogYesNo.clickYes clickYesParam=dialogYesNo.clickYesParam}}

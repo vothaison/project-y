@@ -1,0 +1,10 @@
+<div class='meter'>
+  {{page-header}}
+  {{whole-question-trial question=trialQuestion promises=promises }}
+
+  {{#each questionList as |item index| }}
+  {{component (choose-renderer item) item=item}}
+  {{/each}}
+
+
+</div>
